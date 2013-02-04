@@ -1,0 +1,58 @@
+html,body 
+{
+height: 100%;
+width: 100%;
+overflow: auto;
+}
+
+body 
+{
+background-color: #fff;
+color: #000;
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size: 0.75em;
+}
+
+header 
+{
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 4.8em;
+background-color: #f00;
+}
+
+#content 
+{
+margin-top: 4.8em;
+padding-left: 0.3em;
+padding-right: 0.3em;
+overflow: auto;
+font-size: 100%;
+font-weight: bold;
+}
+
+#content h1 
+{
+font-size: 2em;
+text-align: center;
+}
+
+#colonne1 
+{
+float: left;
+left: 0;
+width: 70%;
+background-color: #00FFFF;
+}
+
+#colonne2
+{
+float: right;
+margin-left:70%
+left: 70%;
+width: 30%;
+background-color: #ff0;
+}
+

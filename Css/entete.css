@@ -1,0 +1,42 @@
+#logo 
+{
+background: transparent url(../Img/logo.png) no-repeat;
+text-indent: -9999em;
+width: 10em;
+height: 55px;
+}
+
+#entete
+{
+width: 90em;
+margin: 0em auto;
+text-align: center;
+}
+
+#entete li
+{
+display: inline-block;
+margin: 0 10em;
+}
+
+#entete button
+{
+display: block;
+width: 8em;
+height: 3em;
+background-color: #fff;
+color: #000;
+text-align: center;
+font-weight: bold;
+border: 1px solid gray;
+}
+
+#entete button:hover
+{
+background-color: #555;
+color: #fff;
+-moz-transition-property: background-color;
+-moz-transition-duration: 0.5s;
+-moz-transition-timing-function: ease-in-out;
+}
+
