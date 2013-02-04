@@ -4,23 +4,25 @@ background: transparent url(../Img/logo.png) no-repeat;
 text-indent: -9999em;
 width: 10em;
 height: 55px;
+display: block;
 }
 
 #entete
 {
-width: 90em;
-margin: 0em auto;
-text-align: center;
+width: 100%;
 }
 
 #entete li
 {
 display: inline-block;
-margin: 0 10em;
+margin-top: 0em;
+text-align: center;
+vertical-align:middle;
 }
 
 #entete button
 {
+margin: 0em 20em 0em 20em;
 display: block;
 width: 8em;
 height: 3em;
