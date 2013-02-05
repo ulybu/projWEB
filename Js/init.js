@@ -24,3 +24,16 @@ for (var i = 0; i < nb_buttons; ++i)
   
   click_button[i].style.cursor = 'pointer';
 }
+
+/*var butt_temp = document.getElementById('popup-text').getElementById('exit-butt-text');
+  if (butt_temp.addEventListener)
+  {
+    butt_temp.addEventListener('click', exitNewText, false);
+  }
+  else
+  {
+	  butt_temp.attachEvent('onclick', exitNewText);
+  }
+  
+  butt_temp.style.cursor = 'pointer';*/
+

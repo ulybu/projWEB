@@ -31,7 +31,7 @@ $EX = isset ($_REQUEST['EX']) ? $_REQUEST['EX'] : 'home';
  switch ($EX)
 {
 	case 'home'   : home();   break;
-	case 'select' : select(); exit;
+	case 'page1' : page1(); exit;
 	case 'input'  : input();  exit;
 	case 'radio'  : radio();  exit;
 	case 'rep_select' : rep_select(); exit;
@@ -70,7 +70,7 @@ function home ()
  *
  * @return none
  */
-function select ()
+function page1 ()
 {
 	$vhtml = new VHtml();
 	$vhtml->showHtml('page1.html');

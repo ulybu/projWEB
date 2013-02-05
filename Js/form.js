@@ -1,4 +1,4 @@
-/**
+/**;
  * Fonctions liées aux différents formulaires
  * @author Christian Bonhomme
  * @version 1.0
@@ -10,14 +10,53 @@
 var Tviews = new Array();
 var i = 0;
 
+function enterNewTitle(){
+var title = document.getElementById('p1-titre2');
+var colonne= title.parentNode;
+var popup = document.getElementById('popup-title');
+colonne.insertBefore(popup,title);
+popup.style.visibility='visible';
+
+initPopupTitle();
+
+}
+function exitNewTitle(){
+	var popup = document.getElementById('popup-title');
+	popup.style.visibility = 'hidden';
+}
+function exitNewText(){
+	var popup = document.getElementById('popup-text');
+	popup.style.visibility = 'hidden';
+
+}
+function enterNewText(){
+	var popup = document.getElementById('popup-text');
+	popup.style.visibility = 'visible';
+	initPopupText();
+
+}
+function submitNewText(){
+	var oldtext = document.getElementById('text1');
+	var newtext = document.getElementById('newTextBox');
+	oldtext.innerHTML  = newtext.value;
+	exitNewText();
+
+}
+function submitNewTitle(){
+	var oldtext = document.getElementById('p1-titre2');
+	var newtext = document.getElementById('newTitleBox');
+	oldtext.innerHTML  = newtext.value;
+	exitNewTitle();
+
+}
 /**
  * Affiche la boîte de sélection
  *
  * @return none
  */
-Tviews[i++] = function viewSelect()
+Tviews[i++] = function viewPage1()
 {
-  changeContent('content', '../Php/json.php', 'EX=select', 'initSelect()');
+  changeContent('content', '../Php/json.php', 'EX=page1', 'initPage1()');
 	  	
 }; // viewSelect()
 
@@ -48,8 +87,22 @@ Tviews[i++] = function viewRadio()
  *
  * @return none
  */
-function initSelect()
+function initPage1()
 {
+	var text_temp = document.getElementById('text1');
+	var title_temp = document.getElementById('p1-titre2');
+	  if (text_temp.addEventListener)
+	  {
+		text_temp.addEventListener('dblclick', enterNewText, false);
+		title_temp.addEventListener('dblclick', enterNewTitle, false);
+	  }
+	  else
+	  {
+	    text_temp.attachEvent('ondblclick', enterNewText);
+		title_temp.attachEvent('ondblclick', enterNewTitle);
+		  
+	  }
+	
   change_select = document.getElementById('select');
   if (change_select)
   {
@@ -62,9 +115,56 @@ function initSelect()
       change_select.attachEvent('onchange', repSelect);
     }
   }
-
+  
 } // initSelect()
+function initPopupTitle(){
 
+	var butt_temp = document.getElementById('exit-butt-title');
+	 var butt_sub = document.getElementById('submit-butt-title');
+	  if (butt_temp.addEventListener)
+	  {
+		butt_temp.addEventListener('click', exitNewTitle, false);
+		butt_sub.addEventListener('click', submitNewTitle, false);
+	  }
+	  else
+	  {
+		  butt_temp.attachEvent('onclick', exitNewTitle);
+		   butt_sub.attachEvent('onclick', submitNewTitle);
+		  
+	  }	  
+	 
+	var oldtext1 = document.getElementById('p1-titre2');
+	var newtext1 = document.getElementById('newTitleBox');
+	newtext1.value = oldtext1.innerHTML;
+	
+	butt_temp.style.cursor = 'pointer';
+	butt_sub.style.cursor = 'pointer';
+
+}
+function initPopupText(){
+
+	var butt_temp = document.getElementById('exit-butt-text');
+	 var butt_sub = document.getElementById('submit-butt-text');
+	  if (butt_temp.addEventListener)
+	  {
+		butt_temp.addEventListener('click', exitNewText, false);
+		butt_sub.addEventListener('click', submitNewText, false);
+	  }
+	  else
+	  {
+		  butt_temp.attachEvent('onclick', exitNewText);
+		   butt_sub.attachEvent('onclick', submitNewText);
+		  
+	  }	  
+	 
+	var oldtext = document.getElementById('text1');
+	var newtext = document.getElementById('newTextBox');
+	newtext.value = oldtext.innerHTML;
+	
+	butt_temp.style.cursor = 'pointer';
+	butt_sub.style.cursor = 'pointer';
+
+}
 /**
  * Affiche la réponse de la boîte de sélection
  *

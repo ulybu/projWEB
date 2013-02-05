@@ -1,4 +1,0 @@
-AuthName "Connexion requise"
-AuthType Basic
-AuthUserFile "/Applications/MAMP/htdocs/ProjetWeb/ProjetV1/.htpasswd"
-Require valid-user
