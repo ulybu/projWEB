@@ -20,6 +20,21 @@ popup.style.visibility='visible';
 initPopupTitle();
 
 }
+function enterNewImg(){
+var popup = document.getElementById('popup-img');
+var img = document.getElementById('image1');
+var colonne = img.parentNode;
+//img.appendChild(popup);
+colonne.insertBefore(popup,img);
+popup.style.visibility='visible';
+
+initPopupImg();
+
+}
+function exitNewImg(){
+	var popup = document.getElementById('popup-img');
+	popup.style.visibility = 'hidden';
+}
 function exitNewTitle(){
 	var popup = document.getElementById('popup-title');
 	popup.style.visibility = 'hidden';
@@ -33,6 +48,16 @@ function enterNewText(){
 	var popup = document.getElementById('popup-text');
 	popup.style.visibility = 'visible';
 	initPopupText();
+
+}
+function changeNewImg(evt){
+ var preview =  document.getElementById('preview');
+ alert(evt.target.files[0].name);
+ preview.src= evt.target.files[0].name;
+}
+function submitNewImg(){
+
+	exitNewImg();
 
 }
 function submitNewText(){
@@ -91,15 +116,18 @@ function initPage1()
 {
 	var text_temp = document.getElementById('text1');
 	var title_temp = document.getElementById('p1-titre2');
+	var img_temp = document.getElementById('image1');
 	  if (text_temp.addEventListener)
 	  {
 		text_temp.addEventListener('dblclick', enterNewText, false);
 		title_temp.addEventListener('dblclick', enterNewTitle, false);
+		img_temp.addEventListener('dblclick', enterNewImg, false);
 	  }
 	  else
 	  {
 	    text_temp.attachEvent('ondblclick', enterNewText);
 		title_temp.attachEvent('ondblclick', enterNewTitle);
+		img_temp.attachEvent('ondblclick', enterNewImg);
 		  
 	  }
 	
@@ -117,6 +145,33 @@ function initPage1()
   }
   
 } // initSelect()
+function initPopupImg(){
+	var butt_temp = document.getElementById('exit-butt-img');
+	 var butt_sub = document.getElementById('submit-butt-img');
+	 var input_tem = document.getElementById('input-img');
+	  if (butt_temp.addEventListener)
+	  {
+		butt_temp.addEventListener('click', exitNewImg, false);
+		butt_sub.addEventListener('click', submitNewImg, false);
+		input_tem.addEventListener('change', changeNewImg, false);
+	  }
+	  else
+	  {
+		  butt_temp.attachEvent('onclick', exitNewImg);
+		  butt_sub.attachEvent('onclick', submitNewImg);
+		  input_tem.attachEvent('onchange', changeNewImg);
+		  
+	  }	  
+	 
+	var preview = document.getElementById('preview');
+	var img = document.getElementById('image1');
+
+	preview.src=img.src;
+	
+	butt_temp.style.cursor = 'pointer';
+	butt_sub.style.cursor = 'pointer';
+
+}
 function initPopupTitle(){
 
 	var butt_temp = document.getElementById('exit-butt-title');
