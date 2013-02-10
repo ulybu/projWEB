@@ -1,8 +1,8 @@
 /**
  * Fonctions javascript utilisant les appels aux serveur http
- * @author Christian Bonhomme
+ * @author Ulysse Prygiel, Paul Tsnobiladzé, based on Christian Bonhomme's framework
  * @version 1.0
- * @package Json7
+ * @package projetWeb
  */
 
 var global = this;

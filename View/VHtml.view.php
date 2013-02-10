@@ -1,9 +1,9 @@
 <?php
 /**
  * Class d'affichage d'un fichier html
- * @author Christian Bonhomme
+ * @author Ulysse Prygiel, Paul Tsnobiladzé, based on Christian Bonhomme's framework
  * @version 1.0
- * @package Json7
+ * @package projetWeb
  *
  */
 class VHtml

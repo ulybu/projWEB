@@ -56,7 +56,7 @@ width: 68%;
 background-color: #00FFFF;
 }
 
-#colonne1 #image1
+#colonne1 img
 {
 float: left;
 text-indent: -9999em;
@@ -67,7 +67,6 @@ height: 300px;
 #colonne2
 {
 float: right;
-margin-left:68%
 left: 68%;
 width: 30%;
 padding-left: 0.3em;

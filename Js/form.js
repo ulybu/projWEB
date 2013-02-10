@@ -1,14 +1,12 @@
-/**;
+/**
  * Fonctions liées aux différents formulaires
- * @author Christian Bonhomme
+ * @author Ulysse Prygiel, Paul Tsnobiladzé, based on Christian Bonhomme's framework
  * @version 1.0
- * @package Json7
+ * @package projetWeb
  * 
  */
 
-// Initialisation du tableau des fonctions d'affichage
-var Tviews = new Array();
-var i = 0;
+
 
 function enterNewTitle(){
 var title = document.getElementById('p1-titre2');
@@ -74,41 +72,11 @@ function submitNewTitle(){
 	exitNewTitle();
 
 }
-/**
- * Affiche la boîte de sélection
- *
- * @return none
- */
-Tviews[i++] = function viewPage1()
-{
-  changeContent('content', '../Php/json.php', 'EX=page1', 'initPage1()');
-	  	
-}; // viewSelect()
+
+
 
 /**
- * Affiche le champ d'input
- *
- * @return none
- */
-Tviews[i++] = function viewInput()
-{
-  changeContent('content', '../Php/json.php', 'EX=input', 'initInput()');
-  
-}; // viewInput()
-
-/**
- * Affiche les boutons radio
- *
- * @return none
- */
-Tviews[i++] = function viewRadio()
-{
-  changeContent('content', '../Php/json.php', 'EX=radio', 'initRadio()');
-	  
-}; // viewRadio()
-
-/**
- * Initialisation de l'écouteur change sur la boîte de sélection
+ * Initialisation de la page 1
  *
  * @return none
  */
@@ -142,9 +110,47 @@ function initPage1()
     {
       change_select.attachEvent('onchange', repSelect);
     }
+  }  
+} // initPage1()
+
+/**
+ * Initialisation de la page 2
+ *
+ * @return none
+ */
+function initPage2()
+{
+	var text_temp = document.getElementById('text1');
+	var title_temp = document.getElementById('p2-titre2');
+	var img_temp = document.getElementById('image2');
+	  if (text_temp.addEventListener)
+	  {
+		text_temp.addEventListener('dblclick', enterNewText, false);
+		title_temp.addEventListener('dblclick', enterNewTitle, false);
+		img_temp.addEventListener('dblclick', enterNewImg, false);
+	  }
+	  else
+	  {
+	    text_temp.attachEvent('ondblclick', enterNewText);
+		title_temp.attachEvent('ondblclick', enterNewTitle);
+		img_temp.attachEvent('ondblclick', enterNewImg);
+		  
+	  }
+	
+  change_select = document.getElementById('select');
+  if (change_select)
+  {
+    if (change_select.addEventListener)
+    {
+      change_select.addEventListener('change', repSelect, false);
+    } 
+    else
+    {
+      change_select.attachEvent('onchange', repSelect);
+    }
   }
-  
-} // initSelect()
+} //initPage2()
+
 function initPopupImg(){
 	var butt_temp = document.getElementById('exit-butt-img');
 	 var butt_sub = document.getElementById('submit-butt-img');
@@ -228,7 +234,7 @@ function initPopupText(){
 function repSelect()
 {
   var param = 'EX=rep_select&VAL='+change_select.value;
-  changeContent('reponse', '../Php/json.php', param);
+  changeContent('reponse', '../Php/projet.php', param);
 	
 } // viewSelect()
 
@@ -262,7 +268,7 @@ function initInput()
 function repInput()
 {
   var param = 'EX=rep_input&VAL='+encodeURIComponent(keyup_input.value);
-  changeContent('reponse', '../Php/json.php', param);
+  changeContent('reponse', '../Php/projet.php', param);
 	
 } // repInput()
 
@@ -309,6 +315,6 @@ function repRadio()
       break;
     }
   }	  
-  changeContent('reponse', '../Php/json.php', param);
+  changeContent('reponse', '../Php/projet.php', param);
 	
 } // repRadio()

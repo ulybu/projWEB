@@ -3,7 +3,7 @@
  * Boîtes à outils
  * @author Christian Bonhomme
  * @version 1.0
- * @package Json7
+ * @package projetWeb
  */
 
 /**

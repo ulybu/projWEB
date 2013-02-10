@@ -1,9 +1,9 @@
 <?php
 /**
  * Fichier de mise en page
- * @author Christian Bonhomme
+ * @author Ulysse Prygiel, Paul Tsnobiladzé, based on Christian Bonhomme's framework
  * @version 1.0
- * @package json7
+ * @package projetWeb
  */
 
 global $page;
@@ -18,11 +18,11 @@ $vpage = new $page['class']();
 <head>
  <meta charset="utf-8" />
  <title><?= $page['title'] ?></title>
- <link rel="icon" type="image/png" href="../Img/json.png" />
- <link rel="stylesheet" type="text/css" href="../Css/json.css" />
+ <link rel="icon" type="image/png" href="../Img/projet.png" />
+ <link rel="stylesheet" type="text/css" href="../Css/projet.css" />
 </head>
 
-<body id="json">
+<body id="projet">
 
 <header>
  <?php $vhtml->showHtml('header.html') ?>
@@ -32,7 +32,7 @@ $vpage = new $page['class']();
  <?php $vpage->$page['method']($page['arg']) ?>
 </div><!-- id="content" -->
 
-<script src="../Js/json.js"></script>
+<script src="../Js/projet.js"></script>
 
 </body>
 </html>

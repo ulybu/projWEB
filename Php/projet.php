@@ -1,14 +1,11 @@
 <?php
 /**
- * Travaux Pratiques : Json7
-
+ * Projet Web
  * Fichier du contrôleur
- * @author Christian Bonhomme
-
+ * @author Ulysse Prygiel, Paul Tsnobiladzé, based on Christian Bonhomme's framework
  * @version 1.0
-
- * @package Json7
- */
+ * @package projetWeb
+*/
  
 
 // Encodage de l'application en UTF-8
@@ -32,7 +29,7 @@ $EX = isset ($_REQUEST['EX']) ? $_REQUEST['EX'] : 'home';
 {
 	case 'home'   : home();   break;
 	case 'page1' : page1(); exit;
-	case 'input'  : input();  exit;
+	case 'page2'  : page2();  exit;
 	case 'radio'  : radio();  exit;
 	case 'rep_select' : rep_select(); exit;
 	case 'rep_input'  : rep_input();  exit;
@@ -66,7 +63,7 @@ function home ()
 } // home ()
 
 /**
- * Affiche la boîte de sélection
+ * Affiche la page 1
  *
  * @return none
  */
@@ -75,19 +72,19 @@ function page1 ()
 	$vhtml = new VHtml();
 	$vhtml->showHtml('page1.html');
 	
-} // select ()
+} // page1 ()
 
 /**
  * Affiche le champ d'input
  *
  * @return none
  */
-function input ()
+function page2 ()
 {
 	$vhtml = new VHtml();
-	$vhtml->showHtml('input.html');
+	$vhtml->showHtml('page2.html');
 	
-} // input ()
+} // page2 ()
 
 /**
  * Affiche les boutons radio
