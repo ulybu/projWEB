@@ -52,7 +52,6 @@ function enterNewText(){
 }
 function changeNewImg(evt){
  var preview =  document.getElementById('preview');
- alert(evt.target.files[0].name);
  preview.src= evt.target.files[0].name;
 }
 function submitNewImg(){

@@ -30,7 +30,8 @@ $EX = isset ($_REQUEST['EX']) ? $_REQUEST['EX'] : 'home';
 
  switch ($EX)
 {
-	case 'home'   : home();   break;
+	case 'home'   : home(); break;
+	case 'im-up' : im_up();break;
 	case 'page1' : page1(); exit;
 	case 'input'  : input();  exit;
 	case 'radio'  : radio();  exit;
@@ -45,7 +46,15 @@ require('../View/layout.view.php');
 
 
 /********* Fonctions de contrôle *********/
+function im_up(){
+	include 'upload.php';
+	global $page;
 
+	$page['title'] = 'Accueil';
+	$page['class'] = 'VHtml';
+	$page['method'] = 'showHtml';
+	$page['arg'] = 'page1.html';
+}
 
 /**
  * Affiche la page d'accueil

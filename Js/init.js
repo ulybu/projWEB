@@ -37,3 +37,4 @@ for (var i = 0; i < nb_buttons; ++i)
   
   butt_temp.style.cursor = 'pointer';*/
 
+initPage1();

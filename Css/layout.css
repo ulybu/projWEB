@@ -238,10 +238,11 @@ resize: none;
 border: 2px solid gray;
 border-radius: 2px;
 }
-#popup-img input
+#popup-img #input-img
 {
 position : absolute;
 bottom : 0.5em;
+left : 0.5em;
 
 }
 #popup-img #titre-newImg
