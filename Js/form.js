@@ -6,10 +6,11 @@
  * 
  */
 
+var page;
 
-
-function enterNewTitle(){
-var title = document.getElementById('p1-titre2');
+function enterNewTitle(evt){
+//var title = document.getElementById('titre2');
+var title = evt.target;
 var colonne= title.parentNode;
 var popup = document.getElementById('popup-title');
 colonne.insertBefore(popup,title);
@@ -18,9 +19,10 @@ popup.style.visibility='visible';
 initPopupTitle();
 
 }
+
 function enterNewImg(){
 var popup = document.getElementById('popup-img');
-var img = document.getElementById('image1');
+var img = document.getElementById('image');
 var colonne = img.parentNode;
 //img.appendChild(popup);
 colonne.insertBefore(popup,img);
@@ -32,6 +34,43 @@ initPopupImg();
 function exitNewImg(){
 	var popup = document.getElementById('popup-img');
 	popup.style.visibility = 'hidden';
+}
+
+
+function initPopupImg(){
+	var butt_temp = document.getElementById('exit-butt-img');
+	var butt_sub = document.getElementById('submit-butt-img');
+	var input_tem = document.getElementById('input-img');
+	if (butt_temp.addEventListener)
+	{
+		butt_temp.addEventListener('click', exitNewImg, false);
+		butt_sub.addEventListener('click', submitNewImg, false);
+		input_tem.addEventListener('change', changeNewImg, false);
+	}
+	else
+	{
+		butt_temp.attachEvent('onclick', exitNewImg);
+		butt_sub.attachEvent('onclick', submitNewImg);
+		input_tem.attachEvent('onchange', changeNewImg);
+	}	  
+	var preview = document.getElementById('preview');
+	var img = document.getElementById('image');
+
+	preview.src=img.src;
+
+	butt_temp.style.cursor = 'pointer';
+	butt_sub.style.cursor = 'pointer';
+
+}
+
+function changeNewImg(evt){
+ var preview =  document.getElementById('preview');
+ preview.src= evt.target.files[0].name;
+}
+function submitNewImg(){
+
+	exitNewImg();
+
 }
 function exitNewTitle(){
 	var popup = document.getElementById('popup-title');
@@ -50,7 +89,6 @@ function enterNewText(){
 }
 function changeNewImg(evt){
  var preview =  document.getElementById('preview');
- alert(evt.target.files[0].name);
  preview.src= evt.target.files[0].name;
 }
 function submitNewImg(){
@@ -58,7 +96,7 @@ function submitNewImg(){
 	exitNewImg();
 
 }
-function submitNewText(){
+function submitNewText(evt){
 	var oldtext = document.getElementById('text1');
 	var newtext = document.getElementById('newTextBox');
 	oldtext.innerHTML  = newtext.value;
@@ -66,7 +104,7 @@ function submitNewText(){
 
 }
 function submitNewTitle(){
-	var oldtext = document.getElementById('p1-titre2');
+	var oldtext = document.getElementById('titre2');
 	var newtext = document.getElementById('newTitleBox');
 	oldtext.innerHTML  = newtext.value;
 	exitNewTitle();
@@ -83,8 +121,8 @@ function submitNewTitle(){
 function initPage1()
 {
 	var text_temp = document.getElementById('text1');
-	var title_temp = document.getElementById('p1-titre2');
-	var img_temp = document.getElementById('image1');
+	var title_temp = document.getElementById('titre2');
+	var img_temp = document.getElementById('image');
 	  if (text_temp.addEventListener)
 	  {
 		text_temp.addEventListener('dblclick', enterNewText, false);
@@ -111,6 +149,7 @@ function initPage1()
       change_select.attachEvent('onchange', repSelect);
     }
   }  
+  page = 'page1';
 } // initPage1()
 
 /**
@@ -121,8 +160,8 @@ function initPage1()
 function initPage2()
 {
 	var text_temp = document.getElementById('text1');
-	var title_temp = document.getElementById('p2-titre2');
-	var img_temp = document.getElementById('image2');
+	var title_temp = document.getElementById('titre2');
+	var img_temp = document.getElementById('image');
 	  if (text_temp.addEventListener)
 	  {
 		text_temp.addEventListener('dblclick', enterNewText, false);
@@ -149,6 +188,7 @@ function initPage2()
       change_select.attachEvent('onchange', repSelect);
     }
   }
+  page = 'page2';
 } //initPage2()
 
 function initPopupImg(){
@@ -166,14 +206,14 @@ function initPopupImg(){
 		  butt_temp.attachEvent('onclick', exitNewImg);
 		  butt_sub.attachEvent('onclick', submitNewImg);
 		  input_tem.attachEvent('onchange', changeNewImg);
-		  
+
 	  }	  
-	 
+
 	var preview = document.getElementById('preview');
-	var img = document.getElementById('image1');
+	var img = document.getElementById('image');
 
 	preview.src=img.src;
-	
+
 	butt_temp.style.cursor = 'pointer';
 	butt_sub.style.cursor = 'pointer';
 
@@ -193,8 +233,7 @@ function initPopupTitle(){
 		   butt_sub.attachEvent('onclick', submitNewTitle);
 		  
 	  }	  
-	 
-	var oldtext1 = document.getElementById('p1-titre2');
+	var oldtext1 = document.getElementById('titre2'); 
 	var newtext1 = document.getElementById('newTitleBox');
 	newtext1.value = oldtext1.innerHTML;
 	
