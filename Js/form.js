@@ -6,29 +6,29 @@
  * 
  */
 
-var page;
+var temp_title;
+var temp_text;
 
 function enterNewTitle(evt){
-//var title = document.getElementById('titre2');
-var title = evt.target;
-var colonne= title.parentNode;
-var popup = document.getElementById('popup-title');
-colonne.insertBefore(popup,title);
-popup.style.visibility='visible';
-
-initPopupTitle();
+// 	var title = evt.target;
+	temp_title = evt.target;
+	var colonne= temp_title.parentNode;
+	var popup = document.getElementById('popup-title');
+	colonne.insertBefore(popup,temp_title);
+	popup.style.visibility='visible';
+	
+	initPopupTitle();
 
 }
 
 function enterNewImg(){
-var popup = document.getElementById('popup-img');
-var img = document.getElementById('image');
-var colonne = img.parentNode;
-//img.appendChild(popup);
-colonne.insertBefore(popup,img);
-popup.style.visibility='visible';
-
-initPopupImg();
+	var popup = document.getElementById('popup-img');
+	var img = document.getElementById('image');
+	var colonne = img.parentNode;
+	//img.appendChild(popup);
+	colonne.insertBefore(popup,img);
+	popup.style.visibility='visible';
+	initPopupImg();
 
 }
 function exitNewImg(){
@@ -73,6 +73,9 @@ function submitNewImg(){
 
 }
 function exitNewTitle(){
+// evt.target.parentNode.remove
+	var butt_sub = document.getElementById('submit-butt-title');
+	butt_sub.removeEventListener('click', submitNewTitle, false);
 	var popup = document.getElementById('popup-title');
 	popup.style.visibility = 'hidden';
 }
@@ -81,7 +84,8 @@ function exitNewText(){
 	popup.style.visibility = 'hidden';
 
 }
-function enterNewText(){
+function enterNewText(evt){
+	temp_text = evt.target;
 	var popup = document.getElementById('popup-text');
 	popup.style.visibility = 'visible';
 	initPopupText();
@@ -96,84 +100,54 @@ function submitNewImg(){
 	exitNewImg();
 
 }
-function submitNewText(evt){
-	var oldtext = document.getElementById('text1');
+function submitNewText(){
+// 	var oldtext = document.getElementById('text1');
+	var oldtext = temp_text;
 	var newtext = document.getElementById('newTextBox');
 	oldtext.innerHTML  = newtext.value;
 	exitNewText();
 
 }
 function submitNewTitle(){
-	var oldtext = document.getElementById('titre2');
+	var oldtext = temp_title;
 	var newtext = document.getElementById('newTitleBox');
 	oldtext.innerHTML  = newtext.value;
 	exitNewTitle();
 
 }
 
-
-
 /**
- * Initialisation de la page 1
+ * Initialisation de la page
  *
  * @return none
  */
-function initPage1()
+function initPage()
 {
-	var text_temp = document.getElementById('text1');
-	var title_temp = document.getElementById('titre2');
+	var text1_temp = document.getElementById('text1');
+	var text2_temp = document.getElementById('text2');
+	var text3_temp = document.getElementById('text3');
+	var title2_temp = document.getElementById('titre2');
+	var title3_temp = document.getElementById('titre3');
 	var img_temp = document.getElementById('image');
-	  if (text_temp.addEventListener)
-	  {
-		text_temp.addEventListener('dblclick', enterNewText, false);
-		title_temp.addEventListener('dblclick', enterNewTitle, false);
-		img_temp.addEventListener('dblclick', enterNewImg, false);
-	  }
-	  else
-	  {
-	    text_temp.attachEvent('ondblclick', enterNewText);
-		title_temp.attachEvent('ondblclick', enterNewTitle);
-		img_temp.attachEvent('ondblclick', enterNewImg);
-		  
-	  }
-	
-  change_select = document.getElementById('select');
-  if (change_select)
-  {
-    if (change_select.addEventListener)
-    {
-      change_select.addEventListener('change', repSelect, false);
-    } 
-    else
-    {
-      change_select.attachEvent('onchange', repSelect);
-    }
-  }  
-  page = 'page1';
-} // initPage1()
-
-/**
- * Initialisation de la page 2
- *
- * @return none
- */
-function initPage2()
-{
-	var text_temp = document.getElementById('text1');
-	var title_temp = document.getElementById('titre2');
-	var img_temp = document.getElementById('image');
-	  if (text_temp.addEventListener)
-	  {
-		text_temp.addEventListener('dblclick', enterNewText, false);
-		title_temp.addEventListener('dblclick', enterNewTitle, false);
-		img_temp.addEventListener('dblclick', enterNewImg, false);
-	  }
-	  else
-	  {
-	    text_temp.attachEvent('ondblclick', enterNewText);
-		title_temp.attachEvent('ondblclick', enterNewTitle);
-		img_temp.attachEvent('ondblclick', enterNewImg);
-		  
+	  if (text1_temp){
+		  if (text1_temp.addEventListener)
+		  {
+			text1_temp.addEventListener('dblclick', enterNewText, false);
+			text2_temp.addEventListener('dblclick', enterNewText, false);
+			text3_temp.addEventListener('dblclick', enterNewText, false);
+			title2_temp.addEventListener('dblclick', enterNewTitle, false);
+			title3_temp.addEventListener('dblclick', enterNewTitle, false);
+			img_temp.addEventListener('dblclick', enterNewImg, false);
+		  }
+		  else
+		  {
+			text1_temp.attachEvent('ondblclick', enterNewText);
+			text2_temp.attachEvent('ondblclick', enterNewText);
+			text3_temp.attachEvent('ondblclick', enterNewText);
+			title2_temp.attachEvent('ondblclick', enterNewTitle);
+			title3_temp.attachEvent('ondblclick', enterNewTitle);
+			img_temp.attachEvent('ondblclick', enterNewImg);  
+		  }
 	  }
 	
   change_select = document.getElementById('select');
@@ -188,8 +162,9 @@ function initPage2()
       change_select.attachEvent('onchange', repSelect);
     }
   }
-  page = 'page2';
-} //initPage2()
+} // initPage()
+
+
 
 function initPopupImg(){
 	var butt_temp = document.getElementById('exit-butt-img');
@@ -219,13 +194,12 @@ function initPopupImg(){
 
 }
 function initPopupTitle(){
-
 	var butt_temp = document.getElementById('exit-butt-title');
 	 var butt_sub = document.getElementById('submit-butt-title');
 	  if (butt_temp.addEventListener)
 	  {
 		butt_temp.addEventListener('click', exitNewTitle, false);
-		butt_sub.addEventListener('click', submitNewTitle, false);
+		butt_sub.addEventListener('click',  submitNewTitle, false);
 	  }
 	  else
 	  {
@@ -233,10 +207,8 @@ function initPopupTitle(){
 		   butt_sub.attachEvent('onclick', submitNewTitle);
 		  
 	  }	  
-	var oldtext1 = document.getElementById('titre2'); 
 	var newtext1 = document.getElementById('newTitleBox');
-	newtext1.value = oldtext1.innerHTML;
-	
+	newtext1.value = temp_title.innerHTML;
 	butt_temp.style.cursor = 'pointer';
 	butt_sub.style.cursor = 'pointer';
 
@@ -257,7 +229,8 @@ function initPopupText(){
 		  
 	  }	  
 	 
-	var oldtext = document.getElementById('text1');
+// 	var oldtext = document.getElementById('text1');
+	var oldtext = temp_text;
 	var newtext = document.getElementById('newTextBox');
 	newtext.value = oldtext.innerHTML;
 	
@@ -265,95 +238,3 @@ function initPopupText(){
 	butt_sub.style.cursor = 'pointer';
 
 }
-/**
- * Affiche la réponse de la boîte de sélection
- *
- * @return none
- */
-function repSelect()
-{
-  var param = 'EX=rep_select&VAL='+change_select.value;
-  changeContent('reponse', '../Php/projet.php', param);
-	
-} // viewSelect()
-
-/**
- * Initialisation de l'écouteur keyup sur le champ input
- *
- * @return none
- */
-function initInput()
-{
-  keyup_input = document.getElementById('input');
-  if (keyup_input)
-  {
-    if (keyup_input.addEventListener)
-    {
-      keyup_input.addEventListener('keyup', repInput, false);
-    } 
-    else
-    {
-      keyup_input.attachEvent('onkeyup', repInput);
-    }
-  }
-
-} // initInput()
-
-/**
- * Affiche la réponse du champ input
- *
- * @return none
- */
-function repInput()
-{
-  var param = 'EX=rep_input&VAL='+encodeURIComponent(keyup_input.value);
-  changeContent('reponse', '../Php/projet.php', param);
-	
-} // repInput()
-
-/**
- * Initialisation des écouteurs click sur les boutons radio
- *
- * @return none
- */
-function initRadio()
-{
-  click_radio = document.getElementsByTagName('input');
-  if (click_radio)
-  {
-	var nb_radio = click_radio.length;
-	for (var i = 0;  i < nb_radio; ++i)
-	{
-      if (click_radio[i].addEventListener)
-      {
-    	click_radio[i].addEventListener('click', repRadio, false);
-      } 
-      else
-      {
-    	click_radio[i].attachEvent('onclick', repRadio);
-      }
-	}
-  }
-
-} // initRadio()
-
-/**
- * Affiche la réponse d'un bouton radio
- *
- * @return none
- */
-function repRadio()
-{
-  var nb_radio = click_radio.length;
-  for (var i = 0, param = '';  i< nb_radio; ++i)
-  {
-	// On vérifie quel bouton à été cliqué
-    if (click_radio[i].checked)
-    {
-      param = 'EX=rep_radio&RADIO='+click_radio[i].value;
-      break;
-    }
-  }	  
-  changeContent('reponse', '../Php/projet.php', param);
-	
-} // repRadio()

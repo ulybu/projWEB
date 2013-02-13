@@ -18,7 +18,8 @@ var i = 0;
  */
 Tviews[i++] = function viewPage1()
 {
-  changeContent('content', '../Php/projet.php', 'EX=page1', 'initPage1()');
+//   	changeContent('content', '../Php/projet.php', 'EX=page1', 'initPage1()');
+	changeContent('content', '../Php/projet.php', 'EX=page1', 'initPage()');
 	  	
 }; // viewPage1()
 
@@ -29,7 +30,8 @@ Tviews[i++] = function viewPage1()
  */
 Tviews[i++] = function viewPage2()
 {
-  changeContent('content', '../Php/projet.php', 'EX=page2', 'initPage2()');
+//   changeContent('content', '../Php/projet.php', 'EX=page2', 'initPage2()');
+  changeContent('content', '../Php/projet.php', 'EX=page2', 'initPage()');
   
 }; // viewPage2()
 
